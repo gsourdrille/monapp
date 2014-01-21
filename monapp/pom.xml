@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.objis</groupId>
+  <artifactId>monapp</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>monapp-dao</module>
+  	<module>monapp-domaine</module>
+  	<module>monapp-service</module>
+  	<module>monapp-web</module>
+  	<module>monapp-package</module>
+  </modules>
+  
+  <properties>
+  	<geronimo.servlet.version>1.0</geronimo.servlet.version>
+  	<geronimo.jsp.version>1.1</geronimo.jsp.version>
+  	<hibernate.version>4.2.0.Final</hibernate.version>
+  </properties>
+  
+  <dependencyManagement>
+	  <dependencies>
+	  		<dependency>
+		        <groupId>org.apache.geronimo.specs</groupId>
+		        <artifactId>geronimo-servlet_3.0_spec</artifactId>
+		        <version>${geronimo.servlet.version}</version>
+		        <scope>provided</scope>
+			</dependency>
+			<dependency>
+		        <groupId>org.apache.geronimo.specs</groupId>
+		        <artifactId>geronimo-jsp_2.2_spec</artifactId>
+		        <version>${geronimo.jsp.version}</version>
+		        <scope>provided</scope>
+			</dependency> 
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+		</dependencies>
+  </dependencyManagement>
+
+  
+  <dependencies>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.10</version>
+		<scope>test</scope>
+	</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	 <distributionManagement>
+                <!-- Publish versioned releases here -->
+                <repository>
+                        <id>nexus</id>
+                        <name>My releases</name>
+                        <url>http://10.183.87.142:8080/nexus/content/repositories/releases/</url>
+                </repository>
+
+                <!-- Publish snapshots here -->
+                <snapshotRepository>
+                        <id>nexus</id>
+                        <name>My snapshots</name>
+                        <url>http://10.183.87.142:8080/nexus/content/repositories/snapshots/</url>
+                </snapshotRepository>
+        </distributionManagement>
+
+</project>
